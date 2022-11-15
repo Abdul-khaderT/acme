@@ -2,15 +2,6 @@
 
 This project was generated using [Nx](https://nx.dev).
 
-
-## To Run/ start Application
-Run `cd acme`
-
-Run `nx serve host --open --devRemotes=american,indian` to run all the remote apps along with host application.
-
-For login use a valid email and random password to login to the applications.
-
-
 ## Applications
 [Host App](https://github.com/Abdul-khaderT/acme/tree/main/apps/host)
 
@@ -26,6 +17,14 @@ For login use a valid email and random password to login to the applications.
 [LOGIN PAGE](https://github.com/Abdul-khaderT/acme/tree/main/libs/feature-auth) : Login page is used in the application http://localhost:4200/auth/login
 
 [Shared Library](https://github.com/Abdul-khaderT/acme/tree/main/libs/shared) : This library has all the utilities, which are shared across application.  [Header component](https://github.com/Abdul-khaderT/acme/tree/main/libs/shared/src/lib/header) : which is used in the applications. Responsible for showing the top navbar in all the pages. Through which user can switch applications and login to the app or visit the profile page once logged in.
+
+
+## To Run/ start Application
+Run `cd acme`
+
+Run `nx serve host --open --devRemotes=american,indian` to run all the remote apps along with host application.
+
+For login use a valid email and random password to login to the applications.
 
 
 
