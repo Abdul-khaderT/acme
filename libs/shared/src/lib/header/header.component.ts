@@ -39,15 +39,15 @@ export class HeaderComponent implements OnInit{
   getMenuItems(loggedIn?: boolean){
     const menus: MenuItem[] = [
       {
-        label:'Home',
+        label:'Home (Host App)',
         command: () => this.router.navigate(["/"])
       },
       {
-        label:'American Bank',
+        label:'American Bank (App 1)',
         command: () => this.router.navigate([RoutePaths.AMERICAN_BANK])
       },
       {
-        label:'Indian Bank',
+        label:'Indian Bank (App 2)',
         command: () => this.router.navigate([RoutePaths.INDIAN_BANK])
       },
       {
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit{
           icon:'pi pi-fw pi-user',
           items:[
               {
-                  label:'Login',
+                  label:'Login (Library)',
                   command: () => this.router.navigate([RoutePaths.AUTH_LOGIN])
               },
               {
@@ -66,7 +66,7 @@ export class HeaderComponent implements OnInit{
         visible: !loggedIn,
       },
       {
-        label:'Profile',
+        label:'Profile  (Library)',
         icon:'pi pi-fw pi-user',
         command: () => this.router.navigate([RoutePaths.PROFILE]),
         visible: loggedIn,
