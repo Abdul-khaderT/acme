@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@acme/feature-auth": ["libs/feature-auth/src/index.ts"],
+      "@acme/feature-profile": ["libs/feature-profile/src/index.ts"],
+      "@acme/home": ["libs/home/src/index.ts"],
+      "@acme/shared": ["libs/shared/src/index.ts"],
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

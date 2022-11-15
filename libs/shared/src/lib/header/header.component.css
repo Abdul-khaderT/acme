@@ -1,0 +1,6 @@
+::ng-deep .p-menubar-root-list{
+    gap: 20px;
+}
+.location{
+    margin-right: 20px;
+}

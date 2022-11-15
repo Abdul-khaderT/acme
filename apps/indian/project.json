@@ -1,0 +1,115 @@
+{
+  "name": "indian",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/indian/src",
+  "prefix": "acme",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/indian",
+        "index": "apps/indian/src/index.html",
+        "main": "apps/indian/src/main.ts",
+        "polyfills": "apps/indian/src/polyfills.ts",
+        "tsConfig": "apps/indian/tsconfig.app.json",
+        "assets": ["apps/indian/src/favicon.ico", "apps/indian/src/assets"],
+        "styles": ["apps/indian/src/styles.css"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/indian/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/indian/src/environments/environment.ts",
+              "with": "apps/indian/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/indian/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "aot": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "indian:build:production"
+        },
+        "development": {
+          "browserTarget": "indian:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4202,
+        "publicHost": "http://localhost:4202"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "indian:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps/indian/**/*.ts", "apps/indian/**/*.html"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/indian/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/angular:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "indian:build",
+        "port": 4202
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "indian:build:development"
+        },
+        "production": {
+          "buildTarget": "indian:build:production"
+        }
+      }
+    }
+  },
+  "tags": []
+}

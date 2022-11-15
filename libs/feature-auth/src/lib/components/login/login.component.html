@@ -1,0 +1,85 @@
+<div class="cardContainer">
+    <p-card class="loginFormCard">
+        <form [formGroup]="loginForm" (submit)="signIn(loginForm)">
+            <div class="p-field">
+                <label for="email">*Email </label>
+                <div class="p-width-100">
+                    <input
+                        id="email"
+                        class="p-inputtext"
+                        formControlName="email"
+                        type="email"
+                        placeholder="Enter Email"
+                        pInputText
+                        [pattern]="emailPattern"
+                        [ngClass]="{
+                            'ng-dirty': loginForm.controls.email.dirty && loginForm.controls.email.errors
+                        }"
+                    />
+                    <div
+                        class="p-error"
+                        *ngIf="loginForm.controls.email.dirty && loginForm.controls.email.errors?.['required']"
+                    >
+                        Email is Required
+                    </div>
+                    <div
+                        class="p-error"
+                        *ngIf="
+                            loginForm.controls.email.errors?.pattern && !loginForm.controls.email.errors?.['required']
+                        "
+                    >
+                        Invalid Email
+                    </div>
+                </div>
+            </div>
+            <div class="p-field">
+                <label for="password">*Password </label>
+                <div class="p-width-100 password_input">
+                    <i
+                        *ngIf="!showPassword"
+                        (click)="showHidePassword(true)"
+                        aria-hidden="true"
+                        class="eye-icon pi pi-eye-slash"
+                    ></i>
+                    <i
+                        *ngIf="showPassword"
+                        (click)="showHidePassword(false)"
+                        aria-hidden="true"
+                        class="eye-icon pi pi-eye"
+                    ></i>
+                    <input
+                        id="password"
+                        class="p-inputtext"
+                        formControlName="password"
+                        [type]="showPassword ? 'text' : 'password'"
+                        placeholder="Enter Password"
+                        pInputText
+                        [ngClass]="{
+                            'ng-dirty': loginForm.controls.password.dirty && loginForm.controls.password.errors
+                        }"
+                    />
+                    <div
+                        class="p-error"
+                        *ngIf="loginForm.controls.password.dirty && loginForm.controls.password.errors?.['required']"
+                    >
+                        Password is Required
+                    </div>
+                </div>
+            </div>
+            <button data-automation-id="loginBtn" type="submit" hidden></button>
+        </form>
+        <div class="footer">
+            <button
+                data-automation-id="loginBtn"
+                pButton
+                pRipple
+                id="loginBtn"
+                class="medium-button app_font-basic app_shadow-black p-button-raised"
+                type="button"
+                label="Login"
+                [disabled] = "!loginForm.valid"
+                (click)="signIn(loginForm)"
+            ></button>
+        </div>
+    </p-card>
+</div>

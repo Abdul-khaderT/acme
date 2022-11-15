@@ -1,0 +1,10 @@
+.welcomeMessage{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+.userEmail{
+    margin-left: 10px;
+    font-weight: 600;
+}
